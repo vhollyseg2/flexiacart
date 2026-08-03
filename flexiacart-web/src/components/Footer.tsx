@@ -29,10 +29,10 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-orange-400 mb-3">Shop Categories</h3>
             <ul className="space-y-2 text-sm text-blue-200">
-              <li><Link href="/" className="hover:text-white transition-colors">Phones & Laptops</Link></li>
-              <li><Link href="/" className="hover:text-white transition-colors">Electronics & TV</Link></li>
-              <li><Link href="/" className="hover:text-white transition-colors">Home Furniture</Link></li>
-              <li><Link href="/" className="hover:text-white transition-colors">Designer Perfumes</Link></li>
+              <li><Link href="/search" className="hover:text-white transition-colors">Phones and Accessories</Link></li>
+              <li><Link href="/search" className="hover:text-white transition-colors">Electronics & Furniture</Link></li>
+              <li><Link href="/search" className="hover:text-white transition-colors">Fashion & Unisex Clothes</Link></li>
+              <li><Link href="/search" className="hover:text-white transition-colors">Groceries & Provisions</Link></li>
             </ul>
           </div>
 
@@ -40,7 +40,7 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-orange-400 mb-3">Portals & Tools</h3>
             <ul className="space-y-2 text-sm text-blue-200">
-              <li><Link href="/seller/apply" className="hover:text-white transition-colors">🚀 Become a Seller</Link></li>
+              <li><Link href="/seller/apply" className="hover:text-white transition-colors">🚀 Become a Seller (Section 2)</Link></li>
               <li><Link href="/seller/earnings" className="hover:text-white transition-colors">💰 Seller Earnings & Ledger</Link></li>
               <li><Link href="/store/chinedu-tech-and-groceries" className="hover:text-white transition-colors">🏬 Public Storefronts</Link></li>
               <li><Link href="/messages" className="hover:text-white transition-colors">💬 Messaging Hub</Link></li>
@@ -56,16 +56,19 @@ export default function Footer() {
               <li><Link href="/returns" className="hover:text-white transition-colors">Returns & Disputes Policy</Link></li>
               <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
+              <li><Link href="/prohibited" className="hover:text-white transition-colors">Prohibited Products</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">Contact and Support</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-blue-300 gap-4">
           <p>© 2026 FlexiaCart.com — All rights reserved. Built to honest multi-vendor marketplace standards.</p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <Link href="/safety" className="hover:text-white">Safety Rules</Link>
             <Link href="/returns" className="hover:text-white">Refund Policy</Link>
-            <Link href="/terms" className="hover:text-white">Seller Terms</Link>
+            <Link href="/prohibited" className="hover:text-white">Prohibited Items</Link>
+            <Link href="/contact" className="hover:text-white">Contact Us</Link>
           </div>
         </div>
       </div>

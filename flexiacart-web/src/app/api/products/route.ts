@@ -25,6 +25,8 @@ export async function POST(request: Request) {
       inStock: true,
       description: body.description || 'Verified seller listing.',
       features: ['Verified Vendor Item', 'Fast Campus & City Delivery'],
+      deliveredSalesCount: 0,
+      locationZone: 'CAMPUS_AND_CITY' as const,
     };
 
     return NextResponse.json({

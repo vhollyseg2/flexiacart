@@ -6,7 +6,6 @@ import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
-import RoleSwitcher from "@/components/RoleSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +30,6 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <div className="min-h-screen flex flex-col">
-              <RoleSwitcher />
               <Navbar />
               <CartDrawer />
               <main className="flex-1">{children}</main>

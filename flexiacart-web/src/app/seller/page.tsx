@@ -40,6 +40,8 @@ export default function SellerPortalPage() {
       inStock: true,
       description: 'New product listed by verified campus & city vendor.',
       features: ['Verified Stock', 'Fast Campus & City Delivery'],
+      deliveredSalesCount: 0,
+      locationZone: 'CAMPUS_AND_CITY' as const,
     };
     setProductsList([item, ...productsList]);
     setNewTitle('');
@@ -53,7 +55,7 @@ export default function SellerPortalPage() {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-black uppercase">
             <Store className="w-4 h-4" />
-            <span>Seller / Vendor Portal</span>
+            <span>Seller / Vendor Portal (Section 12 Compliance)</span>
           </div>
           <h1 className="text-2xl sm:text-4xl font-black">{user.storeName}</h1>
           <p className="text-sm text-blue-200">
