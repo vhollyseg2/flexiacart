@@ -22,6 +22,7 @@ export interface UserProfile {
 
 interface AuthContextType {
   user: UserProfile;
+  setRole: (role: UserRole) => void;
   login: (email: string, phone?: string) => void;
   signup: (data: { name: string; email: string; phone: string; referralCode?: string }) => { success: boolean; message: string };
   submitSellerApplication: (data: { storeName: string; description: string; location: string; productTypes: string; returnTerms: string; pickupInfo: string; contactInfo: string }) => { success: boolean; message: string };
@@ -59,6 +60,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (savedUser) {
         setUser(JSON.parse(savedUser));
       }
+      const savedRole = localStorage.getItem('flexiacart_active_role') as UserRole;
+      if (savedRole && ['CUSTOMER', 'SELLER', 'MODERATOR', 'ADMIN'].includes(savedRole)) {
+        setUser((prev) => ({ ...prev, role: savedRole }));
+      }
     } catch (e) {
       // Ignore
     }
@@ -73,20 +78,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const setRole = (newRole: UserRole) => {
+    const updated = { ...user, role: newRole };
+    saveUser(updated);
+    try {
+      localStorage.setItem('flexiacart_active_role', newRole);
+    } catch (e) {
+      // Ignore
+    }
+  };
+
   const login = (email: string, phone?: string) => {
     const updated = { ...user, email: email || user.email, phone: phone || user.phone };
     saveUser(updated);
   };
 
   const signup = (data: { name: string; email: string; phone: string; referralCode?: string }) => {
-    // Section 2: Standard account creation (do NOT ask customer vs seller)
     const newProfile: UserProfile = {
       id: 'usr_' + Date.now(),
       name: data.name,
       email: data.email,
       phone: data.phone,
       role: 'CUSTOMER',
-      walletBalance: data.referralCode ? 1500 : 0, // ₦1,500 referral reward
+      walletBalance: data.referralCode ? 1500 : 0,
       flexiPoints: 500,
       isVerified: true,
       sellerAppStatus: 'NONE',
@@ -97,7 +111,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const submitSellerApplication = (data: { storeName: string; description: string; location: string; productTypes: string; returnTerms: string; pickupInfo: string; contactInfo: string }) => {
-    // Section 2: Seller application workflow step 1 & 2
     if (!data.storeName || !data.description || !data.returnTerms) {
       return { success: false, message: 'Please complete all required seller application fields.' };
     }
@@ -111,7 +124,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const approveSeller = (storeName: string) => {
-    // Step 5 & 6: Administrator approves seller
     const updated: UserProfile = {
       ...user,
       role: 'SELLER',
@@ -151,6 +163,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     <AuthContext.Provider
       value={{
         user,
+        setRole,
         login,
         signup,
         submitSellerApplication,
