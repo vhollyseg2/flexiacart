@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import { ShoppingCart, Search, MapPin, Zap, Package, Gift, Menu, X, User } from 'lucide-react';
+import { ShoppingCart, Search, MapPin, Zap, Package, Gift, Menu, X, MessageSquare, HelpCircle, Bell, Store } from 'lucide-react';
 
 export default function Navbar() {
   const { itemCount, setIsCartOpen, deliveryType, setDeliveryType } = useCart();
@@ -77,25 +77,32 @@ export default function Navbar() {
           {/* Nav Icons */}
           <div className="flex items-center gap-2 sm:gap-4">
             <Link
-              href="/bundles"
-              className="hidden md:flex items-center gap-1.5 text-sm font-bold text-gray-700 hover:text-orange-500 transition-colors"
+              href="/store/chinedu-tech-and-groceries"
+              className="hidden xl:flex items-center gap-1 text-xs font-bold text-gray-700 hover:text-orange-500 transition-colors"
             >
-              <Package className="w-4 h-4 text-orange-500" />
-              <span>Smart Bundles</span>
+              <Store className="w-4 h-4 text-orange-500" />
+              <span>Stores</span>
             </Link>
             <Link
-              href="/express"
-              className="hidden md:flex items-center gap-1.5 text-sm font-bold text-gray-700 hover:text-orange-500 transition-colors"
+              href="/messages"
+              className="hidden md:flex items-center gap-1 text-xs font-bold text-gray-700 hover:text-orange-500 transition-colors"
             >
-              <Zap className="w-4 h-4 text-orange-500" />
-              <span>30-Min Express</span>
+              <MessageSquare className="w-4 h-4 text-orange-500" />
+              <span>Chat</span>
             </Link>
             <Link
-              href="/rewards"
-              className="hidden lg:flex items-center gap-1.5 text-sm font-bold text-gray-700 hover:text-orange-500 transition-colors"
+              href="/notifications"
+              className="hidden lg:flex items-center gap-1 text-xs font-bold text-gray-700 hover:text-orange-500 transition-colors"
             >
-              <Gift className="w-4 h-4 text-orange-500" />
-              <span>Rewards</span>
+              <Bell className="w-4 h-4 text-orange-500" />
+              <span>Alerts</span>
+            </Link>
+            <Link
+              href="/support"
+              className="hidden md:flex items-center gap-1 text-xs font-bold text-gray-700 hover:text-orange-500 transition-colors"
+            >
+              <HelpCircle className="w-4 h-4 text-orange-500" />
+              <span>Support</span>
             </Link>
 
             {/* Cart Button */}
@@ -155,25 +162,32 @@ export default function Navbar() {
               🛒 Storefront Marketplace
             </Link>
             <Link
+              href="/store/chinedu-tech-and-groceries"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 rounded-lg text-base font-bold text-gray-800 hover:bg-orange-50"
+            >
+              🏬 Public Seller Storefronts
+            </Link>
+            <Link
+              href="/messages"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 rounded-lg text-base font-bold text-gray-800 hover:bg-orange-50"
+            >
+              💬 Buyer–Seller Messaging Hub
+            </Link>
+            <Link
+              href="/support"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 rounded-lg text-base font-bold text-gray-800 hover:bg-orange-50"
+            >
+              🛡️ Help & Ticket Support Desk
+            </Link>
+            <Link
               href="/bundles"
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 rounded-lg text-base font-bold text-gray-800 hover:bg-orange-50"
             >
               📦 Smart Value Bundles (Save 25%)
-            </Link>
-            <Link
-              href="/express"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-bold text-gray-800 hover:bg-orange-50"
-            >
-              ⚡ FlexiExpress 30-Min Delivery
-            </Link>
-            <Link
-              href="/rewards"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-bold text-gray-800 hover:bg-orange-50"
-            >
-              🎁 FlexiRewards & Referral Club
             </Link>
           </div>
         </div>
